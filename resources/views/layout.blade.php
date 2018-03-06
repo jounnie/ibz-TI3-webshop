@@ -12,7 +12,11 @@
     <title>Weed2B Webshop</title>
 </head>
 <body>
-<h1>Test</h1>
+
+<div class="container">
+    @yield('content')
+</div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
