@@ -1,0 +1,11 @@
+start local dev server:
+php artisan serve
+
+setup db:
+php artisan migrate:refresh --seed
+
+empty config cache (after changing something in the env files):
+php artisan config:cache
+
+reload files:
+composer dump-autoload
