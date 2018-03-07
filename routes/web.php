@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'UserController@index');
 Route::post('/login', 'UserController@login');
 Route::get('/logout', 'UserController@logout');
+
+Route::get('/advertisements', 'AdvertisementsController@index');
+Route::get('/advertisements/create', 'AdvertisementsController@create');
+Route::post('/advertisements', 'AdvertisementsController@create');
+Route::get('/advertisements/{id}', 'AdvertisementsController@show');
+Route::get('/advertisements/{id}/edit', 'AdvertisementsController@edit');
+Route::patch('/advertisements/{id}', 'AdvertisementsController@update');
+Route::delete('/advertisements/{id}', 'AdvertisementsController@destroy');
