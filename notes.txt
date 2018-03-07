@@ -9,3 +9,28 @@ php artisan config:cache
 
 reload files:
 composer dump-autoload
+
+
+
+
+Stories
+
+
+S1: benutzer anzeigen (dropdown)
+- tabelle erstellen
+- controller erstellen
+- view erstellen (basierend auf das template)
+
+S2: mit benutzer einlogen
+- formular: benutzer auswählen, mit button einloggen
+- benutzer in der session ablegen
+- ausgewählter benutzer im header anzeigen
+
+S3: log out
+- benutzer aus der session entfernen
+- zurück zum login screen
+
+S4: Inserate anzeigen
+- tabelle erstellen
+- controller erstellen
+- view erstellen (basierend auf das template)
