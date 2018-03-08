@@ -14,7 +14,8 @@ class AdvertisementsController extends Controller
      */
     public function index()
     {
-        //
+        $ads = Advertisement::all();
+        return view('advertisement.index', compact('ads'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AdvertisementsController extends Controller
      */
     public function create()
     {
-        //
+        return view('advertisement.create');
     }
 
     /**
@@ -35,7 +36,15 @@ class AdvertisementsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ad = new Advertisement();
+        $ad->description = $request->description;
+        $ad->amount = $request->amount;
+        $ad->quality = $request->quality;
+        $ad->deliveryDate = $request->deliveryDate;
+        $ad->user_id = $request->session()->get('loggedInUser')->id;
+        $ad->save();
+
+        return $this->index();
     }
 
     /**

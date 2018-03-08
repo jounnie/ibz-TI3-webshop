@@ -15,8 +15,9 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        $request->session()->put("loggedInUser", $request->input('nickname'));
-        return view('advertisement.index');
+        $user = User::where('nickname', $request->input('nickname'))->first();
+        $request->session()->put("loggedInUser", $user);
+        return redirect('/advertisements');
     }
 
     public function logout(Request $request)
