@@ -12,9 +12,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(['nickname' => 'vendor1', 'type' => 'vendor',]);
-        DB::table('users')->insert(['nickname' => 'vendor2', 'type' => 'vendor',]);
-        DB::table('users')->insert(['nickname' => 'supplier1', 'type' => 'supplier',]);
-        DB::table('users')->insert(['nickname' => 'supplier2', 'type' => 'supplier',]);
+        for ($i = 0; $i < 10; $i++) {
+            DB::table('users')->insert(['nickname' => "Anbieter$i", 'type' => 'vendor',]);
+        }
+        for ($i = 0; $i < 15; $i++) {
+            DB::table('users')->insert(['nickname' => "Nachfrager$i", 'type' => 'supplier',]);
+        }
     }
 }

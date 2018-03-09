@@ -44,11 +44,11 @@ S10: delete offer
 S11: select offer -> create order
 S12: search ad
 
-S12: role functionality (
+S13: role functionality (
 - Supplier = create/edit/delete ads, select offer, download own order
 - Vendor = create/edit/delete offers, download own order
 - BOTH = view ads/offers/orders
 
-S13: Deployment@myHostFactory
+S14: Deployment@myHostFactory
 --
 S14: delete ad + offers

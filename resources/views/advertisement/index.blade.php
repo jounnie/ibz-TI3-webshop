@@ -54,8 +54,10 @@
                     <a href="/advertisements/{{$ad->id}}">Details</a>
                     @if($ad->user_id === $user->id && $ad->status !== 'closed')
                         <a href="/advertisements/{{$ad->id}}/edit">Bearbeiten</a>
-                        <a href="/advertisements/{{$ad->id}}/delete"
-                           onclick="return confirm('Inserat löschen?')">Löschen</a>
+                        @if($ad->countOffers() === 0)
+                            <a href="/advertisements/{{$ad->id}}/delete"
+                               onclick="return confirm('Inserat löschen?')">Löschen</a>
+                        @endif
                     @endif
                 </td>
             </tr>
