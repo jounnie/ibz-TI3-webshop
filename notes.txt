@@ -37,11 +37,12 @@ S4: Inserate anzeigen
 
 S5: Inserate löschen
 S6: Inserate editieren
-S7: Angebot abgeben
-S8: Angebot editieren
-S8: Angebot löschen
-S8: Angebot auswählen/Bestellung erstellen
-S9: Inserat suchen
-S10: Deployment
-
-S11: Inserate löschen-> und angebote
+S7: show ad and offers
+S8: create offer
+S9: edit offer
+S10: delete offer
+S11: select offer -> create order
+S12: search ad
+S13: Deployment@myHostFactory
+--
+S14: delete ad + offers

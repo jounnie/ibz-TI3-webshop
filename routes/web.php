@@ -13,6 +13,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+// REST-like routes
+
 Route::get('/', 'UserController@index');
 Route::post('/login', 'UserController@login');
 Route::get('/logout', 'UserController@logout');
@@ -24,3 +26,10 @@ Route::get('/advertisements/{advertisement}', 'AdvertisementsController@show');
 Route::get('/advertisements/{advertisement}/edit', 'AdvertisementsController@edit');
 Route::post('/advertisements/{advertisement}', 'AdvertisementsController@update');
 Route::get('/advertisements/{advertisement}/delete', 'AdvertisementsController@destroy');
+
+Route::get('/advertisements/{advertisement}/offer/create', 'OfferController@create');
+Route::post('/advertisements/{advertisement}/offer/create', 'OfferController@store');
+Route::get('/advertisements/{advertisement}/offer/{offer}/edit', 'OfferController@edit');
+Route::post('/advertisements/{advertisement}/offer/{offer}/edit', 'OfferController@update');
+Route::get('/advertisements/{advertisement}/offer/{offer}/select', 'OfferController@select');
+Route::get('/advertisements/{advertisement}/offer/{offer}/delete', 'OfferController@destroy');
