@@ -20,6 +20,7 @@ Route::post('/login', 'UserController@login');
 Route::get('/logout', 'UserController@logout');
 
 Route::get('/advertisements', 'AdvertisementsController@index');
+Route::post('/advertisements/search', 'AdvertisementsController@search');
 Route::get('/advertisements/create', 'AdvertisementsController@create');
 Route::post('/advertisements', 'AdvertisementsController@store');
 Route::get('/advertisements/{advertisement}', 'AdvertisementsController@show');

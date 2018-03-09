@@ -102,4 +102,22 @@ class AdvertisementsController extends Controller
         $advertisement->delete();
         return redirect("/advertisements");
     }
+
+    public function search(Request $request)
+    {
+        $description = $request->description;
+        $status = $request->status;
+
+        $whereStatements = [];
+        if (!empty($description)) {
+            array_push($whereStatements, ['description', 'like', "%$description%"]);
+        }
+
+        if (!empty($status) && $status !== 'all') {
+            array_push($whereStatements, ['status', '=', "$status"]);
+        }
+
+        $ads = Advertisement::where($whereStatements)->get();;
+        return view('advertisement.index', compact('ads'));
+    }
 }
