@@ -19,6 +19,7 @@ class CreateAdvertisementsTable extends Migration
             $table->float('amount');
             $table->smallInteger('quality');
             $table->date('deliveryDate');
+            $table->enum('status', ['new', 'closed']);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

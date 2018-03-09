@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Advertisement;
 use App\Offer;
+use App\Order;
+use DateTime;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -78,6 +80,19 @@ class OfferController extends Controller
     public function destroy(Advertisement $advertisement, Offer $offer)
     {
         $offer->delete();
+        return redirect("/advertisements/$advertisement->id");
+    }
+
+    public function select(Advertisement $advertisement, Offer $offer)
+    {
+        $order = new Order();
+        $order->orderDate = new DateTime();
+        $order->offer_id = $offer->id;
+        $order->save();
+
+        $advertisement->status = 'closed';
+        $advertisement->save();
+
         return redirect("/advertisements/$advertisement->id");
     }
 }

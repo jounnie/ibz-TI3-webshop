@@ -22,7 +22,7 @@
             <td>{{$ad->amount}}</td>
             <td>{{$ad->quality}}</td>
             <td>{{$ad->deliveryDate}}</td>
-            <td>tbd</td>
+            <td>{{$ad->status}}</td>
             <td>
                 <a href="/advertisements/{{$ad->id}}/offer/create">Angebot erstellen</a>
             </td>

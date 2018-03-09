@@ -25,7 +25,7 @@
                 <td>{{$ad->quality}}</td>
                 <td>{{$ad->deliveryDate}}</td>
                 <td>tbd</td>
-                <td>tbd</td>
+                <td>{{$ad->status}}</td>
                 <td>
                     <a href="/advertisements/{{$ad->id}}">Details</a>
                     <a href="/advertisements/{{$ad->id}}/edit">Bearbeiten</a>
