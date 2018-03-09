@@ -24,3 +24,4 @@ Route::get('/advertisements/{id}', 'AdvertisementsController@show');
 Route::get('/advertisements/{id}/edit', 'AdvertisementsController@edit');
 Route::patch('/advertisements/{id}', 'AdvertisementsController@update');
 Route::delete('/advertisements/{id}', 'AdvertisementsController@destroy');
+Route::get('/advertisements/{id}/delete', 'AdvertisementsController@destroy');

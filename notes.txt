@@ -34,3 +34,14 @@ S4: Inserate anzeigen
 - tabelle erstellen
 - controller erstellen
 - view erstellen (basierend auf das template)
+
+S5: Inserate löschen
+S6: Inserate editieren
+S7: Angebot abgeben
+S8: Angebot editieren
+S8: Angebot löschen
+S8: Angebot auswählen/Bestellung erstellen
+S9: Inserat suchen
+S10: Deployment
+
+S11: Inserate löschen-> und angebote

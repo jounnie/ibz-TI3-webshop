@@ -84,11 +84,12 @@ class AdvertisementsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Advertisement  $adverstisement
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Advertisement $adverstisement)
+    public function destroy(Request $request)
     {
-        //
+        Advertisement::destroy($request->id);
+        return $this->index();
     }
 }

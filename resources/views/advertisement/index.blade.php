@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    Inserat
+    <h1>Inserate</h1>
 
     <table class="table">
         <thead>
@@ -11,6 +11,9 @@
             <th scope="col">Menge (kg)</th>
             <th scope="col">Qualität</th>
             <th scope="col">Lieferdatum</th>
+            <th scope="col">Anzahl Angebote</th>
+            <th scope="col">Status</th>
+            <th scope="col">Funktionen</th>
         </tr>
         </thead>
         <tbody>
@@ -21,6 +24,13 @@
                 <td>{{$ad->amount}}</td>
                 <td>{{$ad->quality}}</td>
                 <td>{{$ad->deliveryDate}}</td>
+                <td>tbd</td>
+                <td>tbd</td>
+                <td>
+                    <a href="/advertisements/{{$ad->id}}">Details</a>
+                    <a href="/advertisements/{{$ad->id}}/edit">Bearbeiten</a>
+                    <a href="/advertisements/{{$ad->id}}/delete" onclick="return confirm('Inserat löschen?')">Löschen</a>
+                </td>
             </tr>
         @endforeach
         </tbody>
