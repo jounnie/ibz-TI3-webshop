@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+    <h1>Inserat erstellen</h1>
     <form method="POST" action="/advertisements">
         @csrf
         <div class="form-group">
