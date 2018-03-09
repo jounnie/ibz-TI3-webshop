@@ -25,13 +25,14 @@ class AdvertisementsController extends Controller
      */
     public function create()
     {
-        return view('advertisement.create');
+        $ad = new Advertisement();
+        return view('advertisement.create', compact('ad'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,10 +51,10 @@ class AdvertisementsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Advertisement  $adverstisement
+     * @param  \App\Advertisement $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function show(Advertisement $adverstisement)
+    public function show(Advertisement $advertisement)
     {
         //
     }
@@ -61,35 +62,42 @@ class AdvertisementsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Advertisement  $adverstisement
+     * @param  \App\Advertisement $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Advertisement $adverstisement)
+    public function edit(Advertisement $advertisement)
     {
-        //
+        $ad = $advertisement;
+        return view('advertisement.create', compact('ad'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Advertisement  $adverstisement
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Advertisement $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Advertisement $adverstisement)
+    public function update(Request $request, Advertisement $advertisement)
     {
-        //
+        $advertisement->description = $request->description;
+        $advertisement->amount = $request->amount;
+        $advertisement->quality = $request->quality;
+        $advertisement->deliveryDate = $request->deliveryDate;
+        $advertisement->save();
+        return redirect("/advertisements");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Request $request
+     * @param Advertisement $advertisement
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy(Request $request)
+    public function destroy(Advertisement $advertisement)
     {
-        Advertisement::destroy($request->id);
-        return $this->index();
+        $advertisement->delete();
+        return redirect("/advertisements");
     }
 }
