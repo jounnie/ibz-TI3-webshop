@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
+    public function offer()
+    {
+        return $this->belongsTo('App\Offer');
+    }
+
 }

@@ -3,21 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Advertisement;
+use App\Order;
 use Illuminate\Http\Request;
 
 class AdvertisementsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $ads = Advertisement::all();
-        return view('advertisement.index', compact('ads'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -49,6 +39,17 @@ class AdvertisementsController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $ads = Advertisement::with('user')->get();
+        return view('advertisement.index', compact('ads'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Advertisement $advertisement
@@ -58,7 +59,11 @@ class AdvertisementsController extends Controller
     {
         $ad = $advertisement;
         $offers = $ad->offers;
-        return view('advertisement.view', compact('ad', 'offers'));
+        if ($ad->status === 'closed') {
+            $order = Order::where('advertisement_id', $ad->id)->first();
+            $selectedOfferId = $order->offer_id;
+        }
+        return view('advertisement.view', compact('ad', 'offers', 'order', 'selectedOfferId'));
     }
 
     /**

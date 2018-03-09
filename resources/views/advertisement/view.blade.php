@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+    @php
+        $user = session('loggedInUser')
+    @endphp
     <h1>Inserat</h1>
     <br>
     <table class="table">
@@ -24,7 +27,9 @@
             <td>{{$ad->deliveryDate}}</td>
             <td>{{$ad->status}}</td>
             <td>
-                <a href="/advertisements/{{$ad->id}}/offer/create">Angebot erstellen</a>
+                @if('vendor' === $user->type && $ad->status !== 'closed')
+                    <a href="/advertisements/{{$ad->id}}/offer/create">Angebot erstellen</a>
+                @endif
             </td>
         </tr>
         </tbody>
@@ -48,13 +53,38 @@
                 <td>{{$offer->price}}</td>
                 <td>{{$offer->user->nickname}}</td>
                 <td>
-                    <a href="/advertisements/{{$ad->id}}/offer/{{$offer->id}}/select">Auswählen</a>
-                    <a href="/advertisements/{{$ad->id}}/offer/{{$offer->id}}/edit">Bearbeiten</a>
-                    <a href="/advertisements/{{$ad->id}}/offer/{{$offer->id}}/delete"
-                       onclick="return confirm('Angebot löschen?')">Löschen</a>
+                    @if($ad->user_id === $user->id && $ad->status !== 'closed')
+                        <a href="/advertisements/{{$ad->id}}/offer/{{$offer->id}}/select">Auswählen</a>
+                    @endif
+                    @if($offer->user_id === $user->id && $ad->status !== 'closed')
+                        <a href="/advertisements/{{$ad->id}}/offer/{{$offer->id}}/edit">Bearbeiten</a>
+                        <a href="/advertisements/{{$ad->id}}/offer/{{$offer->id}}/delete"
+                           onclick="return confirm('Angebot löschen?')">Löschen</a>
+                    @endif
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+
+    @if($ad->status == 'closed')
+        <h1>Bestellung</h1>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Bestelldatum</th>
+                <th scope="col">Angebot</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{$order->id}}</th>
+                <td>{{$order->orderDate}}</td>
+                <td>{{$selectedOfferId}}</td>
+            </tr>
+            </tbody>
+        </table>
+    @endif
 @endsection

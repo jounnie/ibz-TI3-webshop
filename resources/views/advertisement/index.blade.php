@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+    @php
+        $user = session('loggedInUser')
+    @endphp
     <h1>Inserate</h1>
     <br>
     <form method="POST" action="/advertisements/search">
@@ -32,6 +35,7 @@
             <th scope="col">Lieferdatum</th>
             <th scope="col">Anzahl Angebote</th>
             <th scope="col">Status</th>
+            <th scope="col">Erstellt von</th>
             <th scope="col">Funktionen</th>
         </tr>
         </thead>
@@ -43,13 +47,16 @@
                 <td>{{$ad->amount}}</td>
                 <td>{{$ad->quality}}</td>
                 <td>{{$ad->deliveryDate}}</td>
-                <td>tbd</td>
+                <td>{{$ad->countOffers()}}</td>
                 <td>{{$ad->status}}</td>
+                <td>{{$ad->user->nickname}}</td>
                 <td>
                     <a href="/advertisements/{{$ad->id}}">Details</a>
-                    <a href="/advertisements/{{$ad->id}}/edit">Bearbeiten</a>
-                    <a href="/advertisements/{{$ad->id}}/delete"
-                       onclick="return confirm('Inserat löschen?')">Löschen</a>
+                    @if($ad->user_id === $user->id && $ad->status !== 'closed')
+                        <a href="/advertisements/{{$ad->id}}/edit">Bearbeiten</a>
+                        <a href="/advertisements/{{$ad->id}}/delete"
+                           onclick="return confirm('Inserat löschen?')">Löschen</a>
+                    @endif
                 </td>
             </tr>
         @endforeach

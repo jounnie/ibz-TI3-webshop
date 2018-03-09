@@ -10,4 +10,14 @@ class Advertisement extends Model
     {
         return $this->hasMany('App\Offer');
     }
+
+    public function countOffers()
+    {
+        return $this->offers()->count();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->date('orderDate');
             $table->integer('offer_id')->unsigned();
             $table->foreign('offer_id')->references('id')->on('offers');
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id')->references('id')->on('advertisements');
             $table->timestamps();
         });
     }

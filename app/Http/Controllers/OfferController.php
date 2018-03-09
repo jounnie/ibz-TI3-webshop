@@ -88,6 +88,7 @@ class OfferController extends Controller
         $order = new Order();
         $order->orderDate = new DateTime();
         $order->offer_id = $offer->id;
+        $order->advertisement_id = $advertisement->id;
         $order->save();
 
         $advertisement->status = 'closed';
