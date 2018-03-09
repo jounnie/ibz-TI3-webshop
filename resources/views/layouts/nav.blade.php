@@ -1,3 +1,7 @@
+@php
+    $user = session('loggedInUser')
+@endphp
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="/advertisements">Weed2b</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +18,7 @@
         </ul>
     </div>
 
-    <span class="navbar-text">Benutzer: {{ session('loggedInUser', 'unknown user') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="navbar-text">Benutzer: {{ $user->nickname }} ({{ $user->type }})</span>
 
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
